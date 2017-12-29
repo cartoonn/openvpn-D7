@@ -1,0 +1,68 @@
+             echo -e "${green}ได้รับอนุญาตแล้ว...${NC}"
+             sleep 0.3
+
+
+            if [ ! -e /usr/bin/auto-limit-script ]; then
+            echo 'FATAL ERROR'
+            echo 'Error Code: 404'
+            echo 'โปรดอัปเดตสคริปต์พรีเมียม Anda!'
+            fi
+
+            echo "--------------------------------------------------"
+            echo "เมนูผู้ใช้ระบบ จำกัด (Kill Multi Login) otomatis"
+            echo "--------------------------------------------------"
+            echo "1.  ตั้งค่า Auto Kill Multi Login 3 นาที 1 ครั้ง"
+            echo "2.  ตั้งค่า Auto Kill Multi Login 5 นาที 1 ครั้ง"
+            echo "3.  ตั้งค่า Auto Kill Multi Login 7 นาที 1 ครั้ง"
+            echo "4.  ตั้งค่า Auto Kill Multi Login 10 นาที 1 ครั้ง"
+            echo "5.  ตั้งค่า Auto Kill Multi Login 15 นาที 1 ครั้ง"
+            echo "6.  ตั้งค่า Auto Kill Multi Login 30 นาที 1 ครั้ง"
+            echo "7.  ปิดการ จำกัด อัตโนมัติ"
+            echo "8.  ดูบันทึกของผู้ใช้ที่เข้าสู่ระบบหลายรายการ"
+            echo "9.  ล้างขีด จำกัด ของบันทึก"
+            echo "--------------------------------------------------"
+            read -p "เขียนตัวเลือกของคุณ (จำนวน): " x
+
+            if (($x<7)); then
+            echo " "
+            echo "--------------------------------------------------"
+            read -p "จำนวน multilogin สูงสุดที่อนุญาต: " max
+
+            fi
+            if test $x -eq 1; then
+            echo "*/3 * * * *  root /usr/local/bin/auto-limit-script $max" > /etc/cron.d/auto-limit-script
+            echo "ตั้งค่าขีด จำกัด ของผู้ใช้โดยอัตโนมัติเป็นเวลา 3 นาทีแล้ว."
+            elif test $x -eq 2; then
+            echo "*/5 * * * *  root /usr/local/bin/auto-limit-script $max" > /etc/cron.d/auto-limit-script
+            echo "ตั้งค่าขีด จำกัด ของผู้ใช้โดยอัตโนมัติเป็นเวลา 5 นาทีแล้ว."
+            elif test $x -eq 3; then
+            echo "*/7 * * * *  root /usr/local/bin/auto-limit-script $max" > /etc/cron.d/auto-limit-script
+            echo "ตั้งค่าขีด จำกัด ของผู้ใช้โดยอัตโนมัติเป็นเวลา 7 นาทีแล้ว."
+            elif test $x -eq 4; then
+            echo "*/10 * * * *  root /usr/local/bin/auto-limit-script $max" > /etc/cron.d/auto-limit-script
+            echo "ตั้งค่าขีด จำกัด ของผู้ใช้โดยอัตโนมัติเป็นเวลา 10 นาทีแล้ว."
+            elif test $x -eq 5; then
+            echo "*/15 * * * *  root /usr/local/bin/auto-limit-script $max" > /etc/cron.d/auto-limit-script
+            echo "ตั้งค่าขีด จำกัด ของผู้ใช้โดยอัตโนมัติเป็นเวลา 15 นาทีแล้ว."
+            elif test $x -eq 6; then
+            echo "*/30 * * * *  root /usr/local/bin/auto-limit-script $max" > /etc/cron.d/auto-limit-script
+            echo "ตั้งค่าขีด จำกัด ของผู้ใช้โดยอัตโนมัติเป็นเวลา 30 นาทีแล้ว."
+            elif test $x -eq 7; then
+            rm -f /etc/cron.d/auto-limit-script
+            echo "ยกเลิกการ จำกัด การใช้งานโดยผู้ใช้เรียบร้อยแล้ว."
+            elif test $x -eq 8; then
+            if [ ! -e /root/log-limit.txt ]; then
+        	echo "ไม่มีผู้ใช้ที่ตรวจพบการเข้าสู่ระบบหลายรายการ"
+        	else 
+        	echo 'บันทึกผู้ใช้ที่ตรวจพบจะทำงาน multilogin'
+        	echo "-------"
+         	cat /root/log-limit.txt
+            fi
+            elif test $x -eq 9; then
+            echo "" > /root/log-limit.txt
+            echo "ลบบันทึกสำเร็จแล้ว!"
+            else
+            echo "ไม่พบตัวเลือกในเมนู."
+            exit
+            fi
+            echo ""
