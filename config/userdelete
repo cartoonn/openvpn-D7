@@ -1,0 +1,33 @@
+user-list
+#!/bin/bash
+# Created by http://www.sshinjector.net
+# Lock User.
+red='\e[1;31m'
+green='\e[0;32m'
+blue='\e[1;34m'
+NC='\e[0m'
+echo "Connecting to third-vpn.net..."
+sleep 0.2
+echo "กำลังตรวจสอบ..."
+sleep 0.3
+echo -e "${green}ได้รับอนุญาตแล้ว...${NC}"
+sleep 1
+echo""
+
+read -p "ป้อนชื่อผู้ใช้ที่คุณต้องการลบ: " username
+egrep "^$username" /etc/passwd >/dev/null
+if [ $? -eq 0 ]; then
+# proses mengganti passwordnya
+userdel -f $username
+clear
+  echo "Script by third-vpn.net"
+  echo "ขอขอบคุณที่สมัครสมาชิก third-vpn.net-"
+  echo " "
+  echo "-----------------------------------------------"
+  echo -e "ชื่อผู้ใช้ ${blue}$username${NC} มันประสบความสำเร็จที่ ${red}HAPUS${NC}."
+  echo -e "เข้าสู่ระบบสำหรับชื่อผู้ใช้ ${blue}$ชื่อผู้ใช้${NC} ลบแล้ว"
+  echo "-----------------------------------------------"
+else
+echo "ไม่พบชื่อผู้ใช้บนเซิร์ฟเวอร์ของคุณ"
+    exit 1
+    fi
