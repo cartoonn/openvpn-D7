@@ -1,0 +1,30 @@
+            #!/bin/bash
+            # Created by http://www.sshinjector.net
+            red='\e[1;31m'
+            green='\e[0;32m'
+            NC='\e[0m'
+            echo "Connecting to third-vpn.net..."
+            sleep 0.1
+            echo "กำลังตรวจสอบ..."
+            sleep 0.2
+            echo -e "${green}ได้รับอนุญาตแล้ว...${NC}"
+            sleep 0.5
+            echo""
+
+
+            echo "===============================================";
+            echo " ";
+            if [ -e "/root/log-limit.txt" ]; then
+            echo "ผู้ใช้ที่ขีดฆ่าโดยผู้ใช้มีขีด จำกัด";
+            echo "เวลา - ชื่อผู้ใช้ - จำนวนเงิน Multilogin"
+            echo "-------------------------------------";
+            cat /root/log-limit.txt
+            else
+            echo " ไม่มีผู้ใช้รายใดกระทำผิดกฎหมาย"
+            echo " หรือ"
+            echo " ยังไม่มีการเรียกใช้สคริปต์ขีด จำกัด ของผู้ใช้"
+            fi
+            echo " ";
+            echo "===============================================";
+            echo "Script Created by http://third-vpn.net";
+            echo "ขอขอบคุณที่สมัครสมาชิก third-vpn.net";
