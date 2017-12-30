@@ -4,16 +4,16 @@ myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
 
 flag=0
 
-iplist="ip.txt"
+#iplist="ip.txt"
 
 wget --quiet -O iplist.txt https://raw.githubusercontent.com/cartoonn/openvpn-D7/master/ip.txt
 
-if [ -f iplist ]
-then
+#if [ -f iplist ]
+#then
 
-#iplist="iplist.txt"
+iplist="iplist.txt"
 
-#lines=`cat $iplist`
+lines=`cat $iplist`
 #echo $lines
 
 for line in $lines; do
