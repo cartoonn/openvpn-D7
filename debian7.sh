@@ -11,9 +11,9 @@ wget --quiet -O iplist.txt https://raw.githubusercontent.com/cartoonn/openvpn-D7
 if [ -f iplist ]
 then
 
-iplist="iplist.txt"
+#iplist="iplist.txt"
 
-lines=`cat $iplist`
+#lines=`cat $iplist`
 #echo $lines
 
 for line in $lines; do
