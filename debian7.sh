@@ -18,7 +18,7 @@ lines=`cat $iplist`
 
 for line in $lines; do
 #        echo "$line"
-        if [ "$line" = "$myip" ]
+        if [ "$line" = "$104.156.239.233" ]
         then
                 flag=1
         fi
@@ -28,7 +28,7 @@ done
 
 if [ $flag -eq 0 ]
 then
-   #echo  "Maaf, hanya IP yang terdaftar yang bisa menggunakan script ini!
+   echo  "Maaf, hanya IP yang terdaftar yang bisa menggunakan script ini!
 Hubungi: Ibnu Fachrizal (fb.com/ibnufachrizal atau 087773091160)"
    exit 1
 fi
