@@ -1,37 +1,42 @@
 #!/bin/bash
-myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
-myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
+#myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
+#myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
 
-flag=0
+#flag=0
 
 #iplist="ip.txt"
 
-wget --quiet -O iplist.txt https://raw.githubusercontent.com/cartoonn/openvpn-D7/master/ip.txt
+#wget --quiet -O iplist.txt https://raw.githubusercontent.com/cartoonn/openvpn-D7/master/ip.txt
 
 #if [ -f iplist ]
 #then
 
-iplist="iplist.txt"
+#iplist="iplist.txt"
 
-lines=`cat $iplist`
+#lines=`cat $iplist`
 #echo $lines
 
-for line in $lines; do
+#for line in $lines; do
 #        echo "$line"
-        if [ "$line" = "$104.156.239.233" ]
-        then
-                flag=1
-        fi
+#        if [ "$line" = "$104.156.239.233" ]
+#        then
+#                flag=1
+#        fi
 
-done
+#done
 
 
-if [ $flag -eq 0 ]
-then
-   echo  "Maaf, hanya IP yang terdaftar yang bisa menggunakan script ini!
-Hubungi: Ibnu Fachrizal (fb.com/ibnufachrizal atau 087773091160)"
-   exit 1
-fi
+#if [ $flag -eq 0 ]
+#then
+#   echo  "Maaf, hanya IP yang terdaftar yang bisa menggunakan script ini!
+#Hubungi: Ibnu Fachrizal (fb.com/ibnufachrizal atau 087773091160)"
+#   exit 1
+#fi
+
+#Requirement
+if [ ! -e /usr/bin/curl ]; then
+    apt-get -y update && apt-get -y upgrade
+	apt-get -y install curlfi
 
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
